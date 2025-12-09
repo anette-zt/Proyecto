@@ -213,7 +213,24 @@ footer {
     display: block;
 }
 
-.member-desc {
-    font-size: 0.85em;
-    color: #444;
-}   
+.members-grid {
+    display: flex;             /* Activa el modo flexible */
+    flex-wrap: wrap;           /* Permite que bajen de renglón */
+    justify-content: center;   /* Centra todo (incluyendo el último solito) */
+    gap: 20px;                 /* Espacio entre tarjetas */
+    max-width: 800px;          
+    margin: 0 auto 40px;       /* Centra todo el bloque en la página */
+}
+
+/* Asegúrate de que las tarjetas tengan este tamaño fijo */
+.member-card {
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 15px;
+    padding: 20px;
+    width: 200px;  /* Ancho fijo importante para que funcione el cálculo */
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+    border: 1px solid #e1bee7;
+    margin-bottom: 10px; /* Un pequeño margen extra por si acaso */
+}
