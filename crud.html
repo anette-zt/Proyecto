@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Sistema CRUD</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>CRUD (Create, Read, Update, Delete)</h1>
+    </header>
+    <nav class="menu-interno"><a href="index.html">⬅ Regresar al Menú Principal</a></nav>
+
+    <main>
+        <h2>Lista de Proyectos</h2>
+        <div class="form-group">
+            <input type="text" id="inputDato" placeholder="Ingresa un nuevo proyecto...">
+            <button class="btn-add" onclick="agregar()">Agregar</button>
+        </div>
+
+        <table id="tablaCrud">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre del Proyecto</th>
+                    <th>Acción</th>
+                </tr>
+            </thead>
+            <tbody>
+                </tbody>
+        </table>
+    </main>
+
+    <script>
+        let contador = 1;
+        function agregar() {
+            let valor = document.getElementById('inputDato').value;
+            if(valor === "") return;
+            
+            let tabla = document.getElementById('tablaCrud').getElementsByTagName('tbody')[0];
+            let nuevaFila = tabla.insertRow();
+            
+            nuevaFila.innerHTML = `
+                <td>${contador++}</td>
+                <td>${valor}</td>
+                <td><button class="btn-delete" onclick="eliminar(this)">Eliminar</button></td>
+            `;
+            document.getElementById('inputDato').value = "";
+        }
+
+        function eliminar(boton) {
+            let fila = boton.parentNode.parentNode;
+            fila.parentNode.removeChild(fila);
+        }
+    </script>
+
+    <footer><p>Práctica de JS</p></footer>
+</body>
+</html>
