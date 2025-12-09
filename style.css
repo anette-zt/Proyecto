@@ -1,102 +1,178 @@
-/* styles.css */
-    body {
-      font-family: Arial, sans-serif;
-      text-align: center;
-      background-image: url("https://wallpapers.com/images/hd/bts-concert-2048-x-1520-picture-85k4ge8mt84paqrz.jpg"); /* Cambia esta URL por tu imagen */
-      background-size: cover;  /* Ajusta la imagen para cubrir toda la pantalla */
-      background-attachment: fixed; /* Fondo fijo */
-      background-position: center;
-      margin: 0;
-      padding: 0;
-    }
+/* Importamos una fuente más moderna de Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
 
-header {
-    background-color: #2c3e50;
-    color: white;
-    padding: 1rem;
-    text-align: center;
+body {
+    /* Agregamos un degradado oscuro encima de la imagen para que no lastime la vista */
+    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url("https://wallpapers.com/images/hd/bts-concert-2048-x-1520-picture-85k4ge8mt84paqrz.jpg");
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+    
+    /* Tipografía y reset básico */
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #333; /* Color de texto gris oscuro para lectura cómoda */
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
-/* Navegación dentro de las páginas internas */
+/* --- CABECERA --- */
+header {
+    background-color: rgba(44, 62, 80, 0.9); /* Oscuro con transparencia */
+    color: white;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+    border-bottom: 3px solid #9b59b6; /* Línea morada estilo BTS */
+}
+
+h1 {
+    margin: 0;
+    letter-spacing: 1px;
+}
+
+/* --- NAVEGACIÓN INTERNA --- */
 nav.menu-interno {
-    background-color: #34495e;
-    padding: 10px;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 15px;
     text-align: center;
 }
 
 nav.menu-interno a {
     color: white;
     text-decoration: none;
-    font-weight: bold;
-    padding: 8px 15px;
-    background-color: #2980b9;
-    border-radius: 4px;
+    font-weight: 600;
+    padding: 10px 20px;
+    background-color: #8e44ad; /* Morado BTS */
+    border-radius: 25px; /* Bordes redondos */
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
 }
 
 nav.menu-interno a:hover {
-    background-color: #1abc9c;
+    background-color: transparent;
+    border-color: #8e44ad;
+    box-shadow: 0 0 10px #8e44ad;
 }
 
-/* Contenedor principal */
+/* --- CONTENEDOR PRINCIPAL (EFECTO CRISTAL) --- */
 main {
     flex: 1;
-    padding: 20px;
-    max-width: 900px;
-    margin: 0 auto;
     width: 90%;
-    background: white;
-    margin-top: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    max-width: 900px;
+    margin: 40px auto; /* Centrado horizontal y vertical */
+    
+    /* El truco del cristal: Blanco semitransparente + Blur */
+    background: rgba(255, 255, 255, 0.92); 
+    backdrop-filter: blur(10px); /* Desenfoca el fondo detrás de la caja */
+    
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); /* Sombra fuerte para dar profundidad */
+    text-align: left; /* El texto se lee mejor a la izquierda dentro de la caja */
 }
 
-h2 { border-bottom: 2px solid #3498db; padding-bottom: 10px; color: #2c3e50; }
+/* Títulos dentro del contenido */
+h2 {
+    color: #8e44ad; /* Títulos morados */
+    border-bottom: 2px solid #ddd;
+    padding-bottom: 10px;
+}
 
-/* Estilos para el Menú Principal (Index) */
+/* --- MENÚ PRINCIPAL (INDEX) --- */
 .menu-principal {
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
     justify-content: center;
-    margin-top: 30px;
 }
 
 .boton-menu {
-    display: block;
-    width: 200px;
-    padding: 20px;
+    flex: 1 1 200px; /* Responsive */
+    padding: 25px;
     text-align: center;
-    background-color: #ecf0f1;
+    background: linear-gradient(135deg, #ffffff 0%, #f3e5f5 100%); /* Degradado suave */
     text-decoration: none;
-    color: #2c3e50;
+    color: #4a148c;
     font-weight: bold;
-    border-radius: 8px;
-    border: 2px solid #bdc3c7;
-    transition: all 0.3s ease;
+    border-radius: 15px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    border: 1px solid #e1bee7;
 }
 
 .boton-menu:hover {
-    background-color: #3498db;
+    transform: translateY(-5px); /* Flota al pasar el mouse */
+    box-shadow: 0 10px 20px rgba(142, 68, 173, 0.4);
+    background: #8e44ad;
     color: white;
-    transform: translateY(-5px);
 }
 
-/* Tablas */
-table { width: 100%; border-collapse: collapse; margin-top: 15px; }
-th, td { padding: 12px; border: 1px solid #ddd; text-align: left; }
-th { background-color: #3498db; color: white; }
-tr:nth-child(even) { background-color: #f2f2f2; }
+/* --- TABLAS (CRUD Y HERRAMIENTAS) --- */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background-color: white;
+    border-radius: 8px;
+    overflow: hidden; /* Para que las esquinas redondas funcionen en la tabla */
+}
 
-/* CRUD Formulario */
-.form-group { margin-bottom: 15px; display: flex; gap: 10px; }
-input[type="text"] { padding: 8px; flex: 1; border: 1px solid #ccc; border-radius: 4px; }
-.btn-add { background-color: #27ae60; color: white; border: none; padding: 8px 15px; cursor: pointer; }
-.btn-delete { background-color: #e74c3c; color: white; border: none; padding: 5px 10px; cursor: pointer; border-radius: 3px;}
+th {
+    background-color: #8e44ad;
+    color: white;
+    padding: 15px;
+}
 
+td {
+    padding: 12px;
+    border-bottom: 1px solid #eee;
+}
+
+tr:hover {
+    background-color: #f3e5f5; /* Color lila suave al pasar el mouse */
+}
+
+/* --- FORMULARIOS --- */
+input[type="text"] {
+    width: 70%;
+    padding: 12px;
+    border: 2px solid #ddd;
+    border-radius: 25px;
+    outline: none;
+}
+
+input[type="text"]:focus {
+    border-color: #8e44ad;
+}
+
+button {
+    padding: 10px 20px;
+    border-radius: 25px;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-add {
+    background-color: #27ae60;
+    color: white;
+}
+
+.btn-delete {
+    background-color: #c0392b;
+    color: white;
+}
+
+/* --- FOOTER --- */
 footer {
     text-align: center;
     padding: 15px;
-    background-color: #2c3e50;
-    color: white;
-    margin-top: 20px;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: #bbb;
+    font-size: 0.9em;
+    margin-top: auto; /* Empuja el footer al final */
 }
